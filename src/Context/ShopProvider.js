@@ -10,7 +10,7 @@ const ShopProvider = (props) =>{
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await axios.get("http://localhost:3030/allproducts");
+            const response = await axios.get("https://backend-e24l.onrender.com/allproducts");
             setall_product(response.data);
           } catch (error) {
             console.log("Error", error);
@@ -21,7 +21,7 @@ const ShopProvider = (props) =>{
         if (authToken) {
           try {
             const response = await axios.post(
-              'http://localhost:3030/getcart',
+              'https://backend-e24l.onrender.com/getcart',
               {},
               {
                 headers: {
@@ -48,7 +48,7 @@ const ShopProvider = (props) =>{
     setCart((prev)=>({...prev,[itemId]:prev[itemId]+1}))
     if (localStorage.getItem('auth-token')) {
         try {
-          const response = await axios.post('http://localhost:3030/addtocart', {
+          const response = await axios.post('https://backend-e24l.onrender.com/addtocart', {
             itemid: itemId 
           }, {
             headers: {
@@ -68,7 +68,7 @@ const ShopProvider = (props) =>{
         setCart((prev)=>({...prev,[itemId]:prev[itemId]-1}))
         if (localStorage.getItem('auth-token')) {
             try {
-                const response = await axios.post('http://localhost:3030/removefromcart', {
+                const response = await axios.post('https://backend-e24l.onrender.com/removefromcart', {
                   itemid: itemId 
                 }, {
                   headers: {

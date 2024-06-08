@@ -14,7 +14,7 @@ const LoginSignup = () =>{
      const login = async () =>{
       console.log("login executed",formdata)
       try{
-        const response = await axios.post("http://localhost:3030/login",{
+        const response = await axios.post("https://backend-e24l.onrender.com/login",{
             "email":formdata.email,
             "password":formdata.password
         })
@@ -36,7 +36,7 @@ const LoginSignup = () =>{
      const signup = async () =>{
         console.log("signup executed",formdata)
        try{
-        const response = await axios.post("http://localhost:3030/signup",{
+        const response = await axios.post("https://backend-e24l.onrender.com/signup",{
             "name":formdata.name,
             "email":formdata.email,
             "password":formdata.password
@@ -65,15 +65,16 @@ const LoginSignup = () =>{
          <input type="email"  name="email" value={formdata.email} onChange={changeHandler} placeholder="Your email" required/>
          <input type="password"  name="password" value={formdata.password} onChange={changeHandler} placeholder="Your password" required/>
         </div>
+        <div className="loginsignup-agree">
+            <input type="checkbox" name="" id=""/>
+            <p>By continuing , i agree to the terms of use & privacy policy</p>
+         </div>
         <button onClick={()=>{state ==="login"?login():signup()}}>Continue</button>
         {state==="signup"?<p className="loginsignup-login">Already have an account ? <span onClick={()=>{setstate("login")}}>Login here</span></p>:  
           <p className="loginsignup-login">create an account? <span onClick={()=>{setstate("signup")}} >click here</span></p>}
         
     
-         <div className="loginsignup-agree">
-            <input type="checkbox" name="" id=""/>
-            <p>By continuing , i agree to the terms of use & privacy policy</p>
-         </div>
+        
         </div>
         </div>
     )

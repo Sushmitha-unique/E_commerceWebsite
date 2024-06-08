@@ -4,6 +4,15 @@ import ShopContext from "../../Context/ShopContext";
 import Remove from "../../Assets/cart_cross_icon.png"
 const Cartitems = () =>{
     const {all_product,cart,Removefromcart,getTotalcartAmount}=useContext(ShopContext);
+    const fetchCart =  () =>{
+        const authToken = localStorage.getItem('auth-token');
+        if (!authToken) {
+            alert("Login before processing");
+        }
+        else{
+            alert("Need to build");
+        }
+      }
     return (
         <div className="cartitems">
         <div className="cartitems-format-main">
@@ -50,7 +59,7 @@ const Cartitems = () =>{
                     <h3>{getTotalcartAmount()}</h3>
                     </div>
                 </div>
-                <button>PROCEED TO CHECKOUT</button>
+                <button onClick={fetchCart} >PROCEED TO CHECKOUT</button>
              </div>
              <div className="cartitems-promocode">
                  <p>If you have promo code , Enter it here</p>
